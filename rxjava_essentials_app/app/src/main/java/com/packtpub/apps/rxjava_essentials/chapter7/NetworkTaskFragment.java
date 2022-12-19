@@ -20,9 +20,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+ 
 import butterknife.OnClick;
 import rx.Observable;
 import rx.Observer;
@@ -33,10 +33,10 @@ import timber.log.Timber;
 
 public class NetworkTaskFragment extends Fragment {
 
-    @InjectView(R.id.arc_progress)
+    @BindView(R.id.arc_progress)
     ArcProgress mArcProgress;
 
-    @InjectView(R.id.button_download)
+    @BindView(R.id.button_download)
     Button mButton;
 
     private PublishSubject<Integer> mDownloadProgress = PublishSubject.create();
@@ -49,7 +49,7 @@ public class NetworkTaskFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
     }
 
     @OnClick(R.id.button_download)
@@ -84,7 +84,7 @@ public class NetworkTaskFragment extends Fragment {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(success -> {
                 resetDownloadButton();
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
                 File file = new File(destination);
                 intent.setDataAndType(Uri.fromFile(file), "video/avi");
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -175,6 +175,6 @@ public class NetworkTaskFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.reset(this);
+//        ButterKnife.reset(this);
     }
 }

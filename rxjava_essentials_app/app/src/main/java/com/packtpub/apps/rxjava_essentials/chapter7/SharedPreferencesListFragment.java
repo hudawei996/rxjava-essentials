@@ -11,21 +11,25 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+//import android.support.v4.widget.SwipeRefreshLayout;
+//import android.support.v7.widget.LinearLayoutManager;
+//import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+ 
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
@@ -33,10 +37,10 @@ import rx.schedulers.Schedulers;
 
 public class SharedPreferencesListFragment extends Fragment {
 
-    @InjectView(R.id.fragment_first_example_list)
+    @BindView(R.id.fragment_first_example_list)
     RecyclerView mRecyclerView;
 
-    @InjectView(R.id.fragment_first_example_swipe_container)
+    @BindView(R.id.fragment_first_example_swipe_container)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
     private ApplicationAdapter mAdapter;
@@ -54,7 +58,7 @@ public class SharedPreferencesListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 

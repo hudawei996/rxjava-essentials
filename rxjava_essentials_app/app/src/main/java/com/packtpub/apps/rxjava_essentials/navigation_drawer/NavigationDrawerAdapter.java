@@ -3,12 +3,14 @@ package com.packtpub.apps.rxjava_essentials.navigation_drawer;
 import com.packtpub.apps.rxjava_essentials.R;
 
 import android.graphics.Color;
-import android.support.v7.widget.RecyclerView;
+//import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -35,13 +37,13 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     }
 
     @Override
-    public NavigationDrawerAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.drawer_row, viewGroup, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(NavigationDrawerAdapter.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(ViewHolder viewHolder, final int i) {
         viewHolder.textView.setText(mData.get(i).getText());
         viewHolder.textView.setCompoundDrawablesWithIntrinsicBounds(mData.get(i).getDrawable(), null, null, null);
 

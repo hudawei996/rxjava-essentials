@@ -3,7 +3,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.packtpub.apps.rxjava_essentials.example1.ItemFragment">
+             tools:context="com.packtpub.apps.rxjava_essentials.example1.FirstExampleFragment">
 
     <GridView
             android:id="@android:id/list"

@@ -6,26 +6,31 @@ import com.packtpub.apps.rxjava_essentials.chapter8.api.stackexchange.SeApiManag
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+//import android.support.v4.widget.SwipeRefreshLayout;
+//import android.support.v7.app.ActionBarActivity;
+//import android.support.v7.widget.LinearLayoutManager;
+//import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import java.util.ArrayList;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+ 
 import timber.log.Timber;
 
-public class SoActivity extends ActionBarActivity implements SoAdapter.ViewHolder.OpenProfileListener {
+public class SoActivity extends AppCompatActivity implements SoAdapter.ViewHolder.OpenProfileListener {
 
-    @InjectView(R.id.so_recyclerview)
+    @BindView(R.id.so_recyclerview)
     RecyclerView mRecyclerView;
 
-    @InjectView(R.id.so_swipe)
+    @BindView(R.id.so_swipe)
     SwipeRefreshLayout mSwipe;
 
     private SoAdapter mAdapter;
@@ -36,7 +41,7 @@ public class SoActivity extends ActionBarActivity implements SoAdapter.ViewHolde
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_so);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         mAdapter = new SoAdapter(new ArrayList<>());
         mAdapter.setOpenProfileListener(this);

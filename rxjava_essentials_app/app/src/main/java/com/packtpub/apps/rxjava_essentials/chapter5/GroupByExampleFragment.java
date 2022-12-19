@@ -8,9 +8,9 @@ import com.packtpub.apps.rxjava_essentials.apps.ApplicationAdapter;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +22,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+ 
 import rx.Observable;
 import rx.Observer;
 import rx.functions.Func1;
@@ -32,10 +33,10 @@ import rx.observables.GroupedObservable;
 
 public class GroupByExampleFragment extends Fragment {
 
-    @InjectView(R.id.fragment_first_example_list)
+    @BindView(R.id.fragment_first_example_list)
     RecyclerView mRecyclerView;
 
-    @InjectView(R.id.fragment_first_example_swipe_container)
+    @BindView(R.id.fragment_first_example_swipe_container)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
     private ApplicationAdapter mAdapter;
@@ -53,7 +54,7 @@ public class GroupByExampleFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 

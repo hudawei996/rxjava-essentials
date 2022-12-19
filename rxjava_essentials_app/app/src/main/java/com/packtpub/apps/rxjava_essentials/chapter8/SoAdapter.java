@@ -9,7 +9,7 @@ import com.packtpub.apps.rxjava_essentials.chapter8.api.openweathermap.models.We
 import com.packtpub.apps.rxjava_essentials.chapter8.api.stackexchange.models.User;
 
 import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
+//import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +19,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+ 
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
@@ -28,6 +29,8 @@ import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
 import static com.google.common.base.Preconditions.*;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class SoAdapter extends RecyclerView.Adapter<SoAdapter.ViewHolder> {
 
@@ -46,13 +49,13 @@ public class SoAdapter extends RecyclerView.Adapter<SoAdapter.ViewHolder> {
     }
 
     @Override
-    public SoAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.so_list_item, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(SoAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         if (position < mUsers.size()) {
             User user = mUsers.get(position);
             holder.setUser(user);
@@ -72,25 +75,25 @@ public class SoAdapter extends RecyclerView.Adapter<SoAdapter.ViewHolder> {
 
         private final View mView;
 
-        @InjectView(R.id.name)
+        @BindView(R.id.name)
         TextView name;
 
-        @InjectView(R.id.city)
+        @BindView(R.id.city)
         TextView city;
 
-        @InjectView(R.id.reputation)
+        @BindView(R.id.reputation)
         TextView reputation;
 
-        @InjectView(R.id.user_image)
+        @BindView(R.id.user_image)
         ImageView user_image;
 
-        @InjectView(R.id.city_image)
+        @BindView(R.id.city_image)
         ImageView city_image;
 
 
         public ViewHolder(View view) {
             super(view);
-            ButterKnife.inject(this, view);
+            ButterKnife.bind(this, view);
             mView = view;
         }
 
